@@ -94,9 +94,45 @@ function playGame(number)
     }
 }
 
-let games = parseInt(prompt("How many games do you want to play?"));
+//let games = parseInt(prompt("How many games do you want to play?")); //commented due to implementing this in UI
+let games = 5; //play five games, ability to change this later in GUI if I want.
+
+
+/*
 playGame(games);
 console.log("You played: " + games + " games.");
 console.log("Your Total Score: " + humanScore);
 console.log("Computer's Total Score: " + computerScore);
 console.log("Tied games: " + tieScore);
+*/
+
+//// GUI
+
+const btn = document.querySelector(".options");
+btn.addEventListener('click', (event) =>{
+    let target = event.target;
+    switch (target.id)
+    {
+        case 'rock':
+            console.log("rock button clicked");
+            break;
+        case 'scissors':
+            console.log("scissors button clicked");
+            break;
+        case 'paper':
+            console.log("paper button clicked");
+            break;
+        case 'lizard':
+            console.log("lizard button clicked");
+            break;
+        case 'spock':
+            console.log("spock button clicked");
+            break;
+        default:
+            console.log("ERROR WITH BUTTON LISTENER");
+            console.log(target);
+            break;
+
+    }
+
+});
