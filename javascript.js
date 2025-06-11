@@ -2,7 +2,7 @@ console.log("Hello World!");
 /* 1 = rock, 2 = paper, 3 = scissors*/
 function getComputerChoice()
 {
-    return Math.floor(Math.random() * 3) + 1;
+    return Math.floor(Math.random() * 5) + 1;
 }
 
 function getPlay(num)
@@ -14,6 +14,10 @@ function getPlay(num)
             return ("Paper");
         case 3:
             return ("Scissors");
+        case 4:
+            return ("Lizard");
+        case 5:
+            return ("Spock");
         default:
             return ("ERROR");
             
@@ -22,13 +26,17 @@ function getPlay(num)
 
 function getHumanChoice()
 {
-    let answer = (prompt("Rock, Paper, or Scissors?").toLowerCase());
+    let answer = (prompt("Rock, Paper, Scissors, Lizard, or Spock?").toLowerCase());
     if (answer == "rock")
         return 1;
     if (answer === "paper")
         return 2;
     if (answer === "scissors")
         return 3;
+    if (answer === "lizard")
+        return 4;
+    if (answer == "spock")
+        return 5;
     else{
     console.log("Input Error. Please retry.")
     return getHumanChoice();
@@ -49,7 +57,19 @@ function playRound(humanChoice, computerChoice)
         tieScore++;
     }
     //Player Wins
-    else if ((humanChoice == 1 && computerChoice != 2) || (humanChoice == 2 && computerChoice != 3) || (humanChoice == 3 && computerChoice != 1))
+    else if (
+        (humanChoice == 1 && (computerChoice != 2 && computerChoice != 5)) //if player == rock AND cpu != paper or spock
+        ||
+         (humanChoice == 2 && (computerChoice != 3 && computerChoice != 4)) //if player == paper AND cpu != lizard or scissors 
+        ||
+        (humanChoice == 3 && (computerChoice != 1 && computerChoice != 5)) //if player == scissor AND cpu != rock or
+        ||
+        (humanChoice == 4 && (computerChoice != 3 && computerChoice !=  1)) //if player == scissor AND cpu != rock or spock
+        ||
+        (humanChoice == 5 && (computerChoice != 2 && computerChoice != 4)) //if player == scissor AND cpu != rock or spock
+
+
+        )
     {
         console.log("You Win! " + getPlay(humanChoice) + " beats " + getPlay(computerChoice));
         humanScore++;

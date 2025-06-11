@@ -3,10 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
     <script src="javascript.js"></script>
+
 </head>
 <body>
-    
+    <div class="heading"> 
+        <h1> Rock, Paper, Scissors, Lizard, Spock</h1>
+        <h2>-Choose your attack-</h2>
+        <h3> First to five points: Wins!</h3>
+    </div>
+    <div class ="options">
+        <button type="button"> <i class="fa-solid fa-hand-back-fist"></i> </button>
+        <button type="button"> <i class="fa-solid fa-hand"></i> </button>
+        <button type="button"> <i class="fa-solid fa-hand-scissors"></i></button>
+        <button type="button"> <i class="fa-solid fa-hand-lizard"></i> </button>
+        <button type="button"> <i class="fa-solid fa-hand-spock"></i> </button> 
+    </div>
+    <div class="view-image">
+        <button type="button">View Outcome Diagram?</button>
+    </div>
+
+    <div class="image">   
+    <img src="image.svg">
+    <div class="source">
+    <p>image source:
+    <a href="https://commons.wikimedia.org/wiki/File:Pierre_ciseaux_feuille_l%C3%A9zard_spock.svg">Nojhan</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
+    </p>
+    </div>
+    </div>
+    <div class ="results">
+        <div class ="player">
+            <p>You Chose</p>
+            <i class="fa-solid fa-hand-back-fist"></i>
+        </div>
+        <div class="cpu">
+            <p>Computer Chose</p>
+            <i class="fa-solid fa-hand-back-fist"></i>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Website by: Ellie Deli</p>
+        <p>
+        <a href="https://github.com/elliedeli"><i class="fa-brands fa-github"></i></a></p>
+    </div>
+   
 </body>
 </html>
