@@ -119,8 +119,11 @@ button
 {
     display:flex;
     justify-content: space-around;
+    font-size:medium;
+    align-items: center;
 }
 
 .footer a{
-    color: var(--accent)
+    color: var(--accent);
+    font-size: xx-large;
 }
