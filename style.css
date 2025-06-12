@@ -53,6 +53,12 @@ button
     top: 0;
     transition: top ease 0.5s;
 }
+
+
+
+button i{
+    pointer-events: none;
+}
 button:hover{
     top: -10px;
 }
@@ -83,10 +89,10 @@ button:hover{
     padding:2em;
     justify-content: center;
     align-items: center;
-    margin: 5vh;
+    margin: 1vh;
 }
 
-.options, .results, .player, .cpu, .score{
+.options, .results, .player, .cpu, .score, .output{
     border-style: solid;
     border-width: thick;
     border-radius: 1em;
@@ -113,10 +119,18 @@ button:hover{
     color: var(--accent);
 }
 
+.output
+{
+    padding: 20px;
+    margin:1vh;
+    text-align: center;
+}
+
 .score{
     padding: 10px;
     margin-bottom: 0.6vh;
 }
+
 
 #scoreProgress{
     width: 100%;
@@ -124,7 +138,6 @@ button:hover{
 
 }
 #scoreBar{
-    width: 50%;
     height:50px;
     background-color: var(--accent);
 }

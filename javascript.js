@@ -24,9 +24,28 @@ function getPlay(num)
     }
 }
 
-function getHumanChoice()
+function getOutput(num)
 {
-    let answer = (prompt("Rock, Paper, Scissors, Lizard, or Spock?").toLowerCase());
+        switch (num){
+        case 1:
+            return ('<i class="fa-solid fa-hand-back-fist"></i>');
+        case 2:
+            return ('<i class="fa-solid fa-hand"></i>');
+        case 3:
+            return ('<i  class="fa-solid fa-hand-scissors"></i>');
+        case 4:
+            return ('<i  class="fa-solid fa-hand-lizard"></i>');
+        case 5:
+            return ('<i  class="fa-solid fa-hand-spock"></i>');
+        default:
+            return ("ERROR");
+            
+    }
+}
+
+
+function getHumanChoice(answer) //simplify into a switch statement later
+{
     if (answer == "rock")
         return 1;
     if (answer === "paper")
@@ -47,13 +66,17 @@ function getHumanChoice()
 let humanScore = 0;
 let computerScore = 0;
 let tieScore = 0;
+let totalScore = 50;
 
 function playRound(humanChoice, computerChoice)
 {
+    let text = document.querySelector(".output");
     //console.log("human choice: " + humanChoice + " | " + "computer choice: " + computerChoice); //DEBUG
     if (humanChoice == computerChoice)
     {
         console.log("Tie!");
+        text.textContent = ("Tie!");
+
         tieScore++;
     }
     //Player Wins
@@ -71,67 +94,107 @@ function playRound(humanChoice, computerChoice)
 
         )
     {
+
+        
         console.log("You Win! " + getPlay(humanChoice) + " beats " + getPlay(computerChoice));
+        text.textContent = ("You Win! " + getPlay(humanChoice) + " beats " + getPlay(computerChoice));
         humanScore++;
+        totalScore+=10;
+        
     }
     else
     {
         console.log("You Lose! " + getPlay(humanChoice) + " loses to " + getPlay(computerChoice));
+        text.textContent = ("You Lose! " + getPlay(humanChoice) + " loses to " + getPlay(computerChoice));
         computerScore++;
+        totalScore-=10;
     }
+        if (totalScore >= 100)
+        {
+            text.innerHTML = '<p>You have won the bout!</p> <button id="retry"  type="button"> Retry? </button> '
+        }
+        if (totalScore <= 0)
+        {
+            text.innerHTML = '<p>You have lost the bout!</p> <button id="retry"  type="button"> Retry? </button> '
+        }
     
 }
 
+//scorebar code
+
+var i = 0;
+function changeScore(totalScore){
+    if (i == 0){
+        i = 1;
+        var elem = document.getElementById("scoreBar");
+        console.log(" score:" + totalScore);
+        var width = parseFloat(elem.style.width);
+        var id = setInterval(updateBar, 10);
+
+        function updateBar(){
+                console.log("debug " + totalScore)
+                if (width < totalScore)
+                {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+                else if (width > totalScore)
+                {
+                    width--;
+                    elem.style.width = width + "%";
+                }
+                else
+                {
+                    clearInterval(id);
+                    i=0;
+                }
+
+                /*
+                if (width == totalScore){
+                clearInterval(id);
+                i=0;
+                } else
+                {
+                width++;
+                elem.style.width = width + "%";
+                }
+                */
+
+        }
 
 
-function playGame(number)
-{
-    for (let i = 0; i < number; i++)
-    {
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
     }
 }
 
-//let games = parseInt(prompt("How many games do you want to play?")); //commented due to implementing this in UI
-let games = 5; //play five games, ability to change this later in GUI if I want.
 
-
-/*
-playGame(games);
-console.log("You played: " + games + " games.");
-console.log("Your Total Score: " + humanScore);
-console.log("Computer's Total Score: " + computerScore);
-console.log("Tied games: " + tieScore);
-*/
-
-//// GUI
-
-const btn = document.querySelector(".options");
+const btn = document.querySelector("body");
 btn.addEventListener('click', (event) =>{
     let target = event.target;
-    switch (target.id)
+
+    if (target.id == "")
     {
-        case 'rock':
-            console.log("rock button clicked");
-            break;
-        case 'scissors':
-            console.log("scissors button clicked");
-            break;
-        case 'paper':
-            console.log("paper button clicked");
-            break;
-        case 'lizard':
-            console.log("lizard button clicked");
-            break;
-        case 'spock':
-            console.log("spock button clicked");
-            break;
-        default:
-            console.log("ERROR WITH BUTTON LISTENER");
-            console.log(target);
-            break;
+        console.log("not button");
+        
+    }
+    if (target.id == "retry")
+    {
+        location.reload();
+    }
+    else
+    {
+        console.log(target.id);
+        const icon = document.querySelector("#player-option")
+        const cpuIcon = document.querySelector("#cpu-option")
+        
+        const cpuChoice = getComputerChoice();
+        const humanChoice = getHumanChoice(target.id);
+        //display Icons 
+        console.log("hi" + icon.innerHTML.classLi);
+        cpuIcon.innerHTML = getOutput(cpuChoice);
+        icon.innerHTML = getOutput(humanChoice);
+        playRound(humanChoice, cpuChoice);
+        changeScore(totalScore);
+        
 
     }
 

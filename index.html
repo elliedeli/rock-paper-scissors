@@ -21,11 +21,11 @@
         <h2>-Choose your attack-</h2>
     </div>
     <div class ="options">
-        <button type="button"> <i id="rock" class="fa-solid fa-hand-back-fist"></i> </button>
-        <button  type="button"> <i id="paper" class="fa-solid fa-hand"></i> </button>
-        <button  type="button"> <i id="scissors" class="fa-solid fa-hand-scissors"></i></button>
-        <button  type="button"> <i id="lizard" class="fa-solid fa-hand-lizard"></i> </button>
-        <button  type="button"> <i id="spock" class="fa-solid fa-hand-spock"></i> </button> 
+        <button id="rock" type="button"> <i class="fa-solid fa-hand-back-fist"></i> </button>
+        <button id="paper"  type="button"> <i class="fa-solid fa-hand"></i> </button>
+        <button id="scissors" type="button"> <i  class="fa-solid fa-hand-scissors"></i></button>
+        <button id="lizard" type="button"> <i  class="fa-solid fa-hand-lizard"></i> </button>
+        <button id="spock"  type="button"> <i  class="fa-solid fa-hand-spock"></i> </button> 
     </div>
     <div class="view-image">
         <button type="button">View Outcome Diagram?</button>
@@ -42,16 +42,19 @@
     <div class ="results">
         <div class ="player">
             <p>Player</p>
-            <i class="fa-solid fa-question"></i>
+            <div id="player-option">
+            <i class="fa-solid fa-question"></i></div>
         </div>
         <div class="cpu">
             <p>Computer</p>
-            <i class="fa-solid fa-question"></i>
+            <div id="cpu-option">
+            <i class="fa-solid fa-question"></i></div>
         </div>
     </div>
+    <div class="output"> Let the games begin!</div>
     <div class="score">
         <div id="scoreProgress">
-            <div id="scoreBar"></div>
+            <div id="scoreBar" style="width: 50% "></div>
         </div>
     </div>
 
